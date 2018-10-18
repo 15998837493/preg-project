@@ -89,12 +89,12 @@ import com.mnt.preg.web.utils.WsPool;
 
 /**
  * 接诊平台--问诊页面
- * 
+ *
  * @author xdc
  * @version 1.0
- * 
- *          变更履历：
- *          v1.0 2017-12-18 xdc 初版
+ * <p>
+ * 变更履历：
+ * v1.0 2017-12-18 xdc 初版
  */
 @Controller
 public class DiagnosisReceiveController extends BaseController {
@@ -148,13 +148,14 @@ public class DiagnosisReceiveController extends BaseController {
     private PregPlanService planService;
 
     // ***************************************【问诊页面引导】**********************************************
+
     /**
      * 获取问诊主页面
-     * 
-     * @author zcq
+     *
      * @param diagnosisId
      * @param model
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.PLATFORM_RECEIVE_MAIN)
     public String getReceiveMainView(String diagnosisId, String custId, Model model) {
@@ -214,10 +215,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 获取接诊的基本信息
-     * 
-     * @author xdc
+     *
      * @param diagnosisId
      * @return
+     * @author xdc
      */
     private PregPlanJiezhenPojo getInitPlanJiezhen(String diagnosisId) {
         PregPlanJiezhenPojo group = new PregPlanJiezhenPojo();
@@ -232,10 +233,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 初始化诊断所有
-     * 
-     * @author zcq
+     *
      * @param condition
      * @return
+     * @author zcq
      */
     private List<InterveneDiseaseGroupPojo> getInitInterveneDisease(InterveneDiseaseCondition condition) {
         List<InterveneDiseasePojo> interveneDiseaseList = interveneDiseaseService.queryInterveneDisease(condition);
@@ -261,10 +262,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 获取接诊评价项目
-     * 
-     * @author zcq
+     *
      * @param diagnosisId
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_INSPECT_QUERY)
     public @ResponseBody
@@ -278,20 +279,20 @@ public class DiagnosisReceiveController extends BaseController {
     }
 
     // ***************************************【问诊页面引导】**********************************************
+
     /**
      * 曲线图获取数据（体重，收缩压，舒张压）
-     * 
+     *
+     * @param diagnosisId sign：不为空说明是体重在调用，为空则是收缩压和舒张压在调用
+     *                    textVal：现体重
+     *                    custWeight：孕前体重
+     * @return WebResult<List               <               PregDiagnosisPojo>>
      * @author dhs
-     * @param diagnosisId
-     *            sign：不为空说明是体重在调用，为空则是收缩压和舒张压在调用
-     *            textVal：现体重
-     *            custWeight：孕前体重
-     * @return WebResult<List<PregDiagnosisPojo>>
      */
     @RequestMapping(value = PlatformMapping.ECHARTS_PICTURE_GET_DATA)
     public @ResponseBody
     WebResult<List<PregDiagnosisPojo>> getDataWeightPicture(String diagnosisId, String sign, String textVal,
-            String custWeight) {
+                                                            String custWeight) {
         WebResult<List<PregDiagnosisPojo>> webResult = new WebResult<List<PregDiagnosisPojo>>();
         if (sign == null) {
             // sign为空，说明此时调用的是收缩压或者舒张压，按日期正序
@@ -391,15 +392,15 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 保存体重曲线图下面的结论
-     * 
-     * @author dhs
+     *
      * @param
      * @return WebResult<Boolean>
+     * @author dhs
      */
     @RequestMapping(value = PlatformMapping.SAVE_ECHARTS_WEIGHT_RESULT)
     public @ResponseBody
     WebResult<Boolean> saveEchartsWeightResult(String diagnosisId, String oneText, String twoText,
-            String type) {
+                                               String type) {
         WebResult<Boolean> webResult = new WebResult<Boolean>();
         // type为结论类型
         // rise_yunqi： 建议整体孕期体重适宜增长范围
@@ -435,10 +436,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 查询体重曲线图下面的结论
-     * 
-     * @author dhs
+     *
      * @param
      * @return WebResult<Boolean>
+     * @author dhs
      */
     @RequestMapping(value = PlatformMapping.QUERY_ECHARTS_WEIGHT_RESULT)
     public @ResponseBody
@@ -452,10 +453,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 重新评估检测项目
-     * 
-     * @author zcq
+     *
      * @param inspectId
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.USER_INPSECT_RESET)
     public @ResponseBody
@@ -467,10 +468,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * JSP页面--yizhu.jsp 检测项目完成后 更新 检测状态 以及 分析结果
-     * 
-     * @author zcq
+     *
      * @param diagnosisItemBo
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.PLAN_INSPECTSTATUS_UPDATE)
     public @ResponseBody
@@ -491,11 +492,11 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 删除接诊评价项目
-     * 
-     * @author zcq
+     *
      * @param inspectCodeList
      * @param diagnosisId
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_INSPECT_DELETE)
     public @ResponseBody
@@ -531,10 +532,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 发送接诊评价项目
-     * 
-     * @author zcq
+     *
      * @param inspectListJson
      * @return
+     * @author zcq
      */
     @SuppressWarnings("unchecked")
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_INSPECT_SEND)
@@ -579,17 +580,17 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 发送评价项目更改状态
-     * 
-     * @author zcq
+     *
      * @param inspectCodeList
      * @param inspectStatus
      * @param diagnosisId
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSISITEM_INSPECTSTATUS_UPDATE)
     public @ResponseBody
     WebResult<Boolean> updateDiagnosisItemInspectStatus(List<String> inspectCodeList, String inspectStatus,
-            String diagnosisId) {
+                                                        String diagnosisId) {
         WebResult<Boolean> webResult = new WebResult<Boolean>();
         // 修改状态
         diagnosisService.updateDiagnosisItemInspectStatus(inspectCodeList, inspectStatus, diagnosisId);
@@ -598,11 +599,11 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 获取评价项目结论
-     * 
-     * @author zcq
+     *
      * @param diagnosisId
      * @param custId
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_INSPECT_RESULT)
     public @ResponseBody
@@ -623,10 +624,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 添加接诊评价项目
-     * 
-     * @author zcq
+     *
      * @param diagnosisItemJson
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_INSPECT_ADD)
     public @ResponseBody
@@ -641,13 +642,14 @@ public class DiagnosisReceiveController extends BaseController {
     }
 
     // ***************************************【实验室指标信息】**********************************************
+
     /**
      * 异步查询报告单信息
-     * 
-     * @author mlq
+     *
      * @param custId
      * @param diagnosisId
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_REPORTS_QUERY)
     public @ResponseBody
@@ -661,16 +663,16 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 添加报告单
-     * 
-     * @author mlq
+     *
      * @param diagnosisId
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_REPORT_ADD)
     public @ResponseBody
     WebResult<DiagnosisHospitalInspectReportPojo> addReport(String diagnosisId, String reportName,
-            String custId,
-            String inspects, String items) {
+                                                            String custId,
+                                                            String inspects, String items) {
         WebResult<DiagnosisHospitalInspectReportPojo> webResult = new WebResult<DiagnosisHospitalInspectReportPojo>();
         DiagnosisHospitalInspectReport report = new DiagnosisHospitalInspectReport();
         report.setCustId(custId);
@@ -725,10 +727,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 修改报告单
-     * 
-     * @author mlq
+     *
      * @param report
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_REPORT_UPDATE)
     public @ResponseBody
@@ -743,18 +745,18 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 添加检验项目
-     * 
-     * @author mlq
+     *
      * @param diagnosisId
      * @param reportId
      * @param inspect
      * @param item
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_ITEM_ADD)
     public @ResponseBody
     WebResult<List<DiagnosisHospitalItemPojo>> addItems(String diagnosisId, String reportId,
-            String inspect, String items) {
+                                                        String inspect, String items) {
         WebResult<List<DiagnosisHospitalItemPojo>> webResult = new WebResult<List<DiagnosisHospitalItemPojo>>();
         // 添加收费信息
         if (!StringUtils.isBlank(inspect)) {
@@ -782,11 +784,11 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 检验项目更新（单条更新）
-     * 
-     * @author mlq
+     *
      * @param reportId
      * @param item
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_ITEM_UPDATE)
     public @ResponseBody
@@ -803,11 +805,11 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 检验项目更新（发送检验报告）
-     * 
-     * @author mlq
+     *
      * @param custId
      * @param ids
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_ITEMS_SEND)
     public @ResponseBody
@@ -842,17 +844,17 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 删除检验项目信息
-     * 
-     * @author mlq
+     *
      * @param reportId
      * @param inspectId
      * @param itemId
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_ITEM_DELETE)
     public @ResponseBody
     WebResult<List<DiagnosisHospitalItemPojo>> deleteQuotaItems(String reportId, String inspectId,
-            String itemId) {
+                                                                String itemId) {
         WebResult<List<DiagnosisHospitalItemPojo>> webResult = new WebResult<List<DiagnosisHospitalItemPojo>>();
         if (!StringUtils.isBlank(reportId)) {
             // 删除报告单信息
@@ -881,11 +883,11 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 检验项目录入页面
-     * 
-     * @author mlq
+     *
      * @param diagnosisId
      * @param custId
      * @param model
+     * @author mlq
      */
     private void getCheckItemsView(String diagnosisId, String custId, Model model) {
         // 本次接诊的报告单信息
@@ -914,10 +916,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 根据接诊id获取上一次的检查指标
-     * 
-     * @author xdc
+     *
      * @param diagnosisId
      * @return
+     * @author xdc
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_LAST_ITEM_LIST)
     public @ResponseBody
@@ -944,10 +946,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 检索符合条件的推断指标组合
-     * 
-     * @author mlq
+     *
      * @param diagnosisId
      * @return
+     * @author mlq
      */
     @RequestMapping(value = PlatformMapping.DISEASE_ITEM_GROUP_FIT)
     public @ResponseBody
@@ -1014,7 +1016,8 @@ public class DiagnosisReceiveController extends BaseController {
             boolean flag = true;
             if (!CollectionUtils.isEmpty(groupList)) {
                 for (DiseaseItemDeduceGroupPojo group : groupList) {
-                    OUT: for (String id : group.getItemIds().split(",")) {
+                    OUT:
+                    for (String id : group.getItemIds().split(",")) {
                         diseaseItemList = map.get(id + group.getDiseaseId());
 
                         if (CollectionUtils.isEmpty(diseaseItemList)) {
@@ -1070,10 +1073,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 判断内容是否是数字
-     * 
-     * @author xdc
+     *
      * @param str
      * @return
+     * @author xdc
      */
     private boolean isNumeric(String str) {
         Pattern pattern = Pattern.compile("[1-9]\\d*\\.?\\d*");
@@ -1086,12 +1089,12 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 发送实验室指标
-     * 
-     * @author zcq
+     *
      * @param inspectCodeListStr
      * @param inspectStatus
      * @param diagnosisId
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_ITEM_SEND)
     public @ResponseBody
@@ -1120,10 +1123,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 条件检索历史检验项目
-     * 
-     * @author zcq
+     *
      * @param disease
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_HOSPITAL_ITEM_QUERY)
     public @ResponseBody
@@ -1135,10 +1138,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 条件检索历史检验报告
-     * 
-     * @author zcq
+     *
      * @param condition
      * @return
+     * @author zcq
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_HOSPITAL_REPORT_QUERY)
     public @ResponseBody
@@ -1152,10 +1155,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 添加诊断项目
-     * 
-     * @author xdc
+     *
      * @param pojo
      * @return
+     * @author xdc
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_DISEASE_ADD)
     public @ResponseBody
@@ -1174,10 +1177,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 删除诊断项目
-     * 
-     * @author xdc
+     *
      * @param pojo
      * @return
+     * @author xdc
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_DISEASE_DELETE)
     public @ResponseBody
@@ -1191,10 +1194,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 更新诊断项目
-     * 
-     * @author xdc
+     *
      * @param pojo
      * @return
+     * @author xdc
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_DISEASE_UPDATE)
     public @ResponseBody
@@ -1207,10 +1210,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 通过历史记录添加诊断项目
-     * 
-     * @author xdc
+     *
      * @param pojo
      * @return
+     * @author xdc
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_DISEASE_BATCH_SAVE)
     public @ResponseBody
@@ -1234,10 +1237,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 获取接诊数据
-     * 
-     * @author xdc
+     *
      * @param pojo
      * @return
+     * @author xdc
      */
     @RequestMapping(value = PlatformMapping.DIAGNOSIS_DISEASE_GET)
     public @ResponseBody
@@ -1252,12 +1255,13 @@ public class DiagnosisReceiveController extends BaseController {
     }
 
     // ***************************************【常用诊断项目】************************************************
+
     /**
      * 异步获取个人常用诊断项目
-     * 
-     * @author scd
+     *
      * @param diseaseOften
      * @return
+     * @author scd
      */
     @RequestMapping(value = PlatformMapping.DISEASE_OFTEN_QUERY)
     public @ResponseBody
@@ -1271,10 +1275,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 添加个人常用诊断项目
-     * 
-     * @author scd
+     *
      * @param diseaseOften
      * @return
+     * @author scd
      */
     @RequestMapping(value = PlatformMapping.DISEASE_OFTEN_ADD)
     public @ResponseBody
@@ -1293,10 +1297,10 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 删除个人常用诊断项目
-     * 
-     * @author scd
+     *
      * @param diseaseOften
      * @return
+     * @author scd
      */
     @RequestMapping(value = PlatformMapping.DISEASE_OFTEN_REMOVE)
     public @ResponseBody
@@ -1307,28 +1311,29 @@ public class DiagnosisReceiveController extends BaseController {
     }
 
     /**
-     * 
      * 验证常用诊断项目名称是否重复
-     * 
-     * @author scd
+     *
      * @param diseaseName
      * @return
+     * @author scd
      */
     @RequestMapping(value = PlatformMapping.DISEASE_OFTEN_CHECK_NAME)
     public @ResponseBody
     WebResult<Boolean> checkDiseaseOftenName(String diseaseName) {
         WebResult<Boolean> webResult = new WebResult<Boolean>();
         webResult.setSuc(diseaseOftenService.checkDiseaseOftenName(diseaseName));
+        // asdgfasgasdgfasdf
         return webResult;
     }
 
     // ***************************************【自定义工具方法】**********************************************
+
     /**
      * 通过diagnosisId获取同一个custId下的一组接诊信息
-     * 
-     * @author dhs
+     *
      * @param diagnosisId
      * @return List<PregDiagnosisPojo>
+     * @author dhs
      */
     private List<PregDiagnosisPojo> getDiagnosisesById(String diagnosisId, Integer status) {
         PregDiagnosisPojo diagnosis = diagnosisService.getDiagnosis(diagnosisId);
@@ -1347,9 +1352,9 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 更新营养病例的内容
-     * 
-     * @author xdc
+     *
      * @param diagnosisId
+     * @author xdc
      */
     private void updateUserPlan(String diagnosisId) {
         planService.saveDiagnosisPoints(diagnosisId);
@@ -1358,9 +1363,9 @@ public class DiagnosisReceiveController extends BaseController {
 
     /**
      * 推送患者在助理端进度到医生端
-     * 
-     * @author dhs
+     *
      * @param
+     * @author dhs
      */
     private void updateDiagnosisStatusWs(String sendCode, String diagnosisId) {
         // 判断指标和诊断项目是否都完成,如果都完成给状态2（完成），如果有未完成的给状态1（诊疗），没添加指标算完成（之前逻辑这么写的）
