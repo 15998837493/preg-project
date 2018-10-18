@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context> 
+<Resource name="jdbc/core-db"
+      auth="Container"
+      type="javax.sql.DataSource"
+      factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+      testWhileIdle="true"
+      testOnBorrow="true"
+      maxActive="5"
+      maxIdle="20"
+      minIdle="5"
+      maxWait="300"
+      initialSize="5"
+      removeAbandonedTimeout="120"
+      removeAbandoned="false"
+      logAbandoned="false"
+      username="dev"
+      password="manager001"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.3:4306/preg-db-1.7.3?autoReconnect=true"
+      validationQuery="SELECT 1"
+/>
+</Context>
+<!--  
+
+	  username="maiyam"
+      password="123!@#asd"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.123:3306/preg-1.5.4?autoReconnect=true"
+
+      username="sa"
+      password="123456"
+      driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+      url="jdbc:sqlserver://192.168.0.114:1433;DatabaseName=JZCIS"
+
+      username="dev"
+      password="password"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.3:9306/core_db?autoReconnect=true"
+      
+      username="test"
+      password="systest"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.3:8306/core_db?autoReconnect=true"
+      
+      username="dev"
+      password="password"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.3:7306/core_db?autoReconnect=true"
+      
+      username="manager"
+      password="mnt31275668"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.3:6306/core_db?autoReconnect=true"
+      
+      username="test"
+      password="password"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.3:5306/core_db?autoReconnect=true"
+      
+      username="dev"
+      password="manager001"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://192.168.0.3:4306/core_db?autoReconnect=true"
+      
+	  username="root"
+      password="met_123456"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://127.0.0.1:3306/core_db?autoReconnect=true"
+      
+      username="root"
+      password="admin"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://127.0.0.1:3306/core_db?autoReconnect=true"
+-->
+ <!--url="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS = (PROTOCOL = TCP)(HOST = 10.64.63.113)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST = 10.64.63.112)(PORT =1521))(LOAD_BALANCE = yes)(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME =xywdb2)))"-->
+ <!--name:DataSource的名称-->  
+ <!--type:数据源对应的java类型，一般设计为javax.sql.DataSource-->  
+ <!--username:数据库登陆名-->  
+ <!--password:数据库登陆密码-->  
+ <!--driverClassName:指定数据库JDBC驱动程序-->  
+ <!--url:指定数据库的URL-->  
+ <!--maxIdle:连接池处于空闲状态的数据库连接的最大数目，取0表示不受限制-->  
+ <!--maxWait:连接池中数据库连接处于空闲状态的最长时间（以毫秒为单位），取0表示无限制等待时间-->  
+ <!--maxActive:连接池处于活动状态的数据库连接的最大数目，去0表示不受限制-->  
+ <!--initialSize:初始化连接数目  -->

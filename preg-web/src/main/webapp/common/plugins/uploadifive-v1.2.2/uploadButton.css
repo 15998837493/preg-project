@@ -1,0 +1,45 @@
+.myButton {
+	background-color: #3285E1;
+	background-image: linear-gradient(bottom, #3285E1 0%, #3285E1 100%);
+	background-image: -o-linear-gradient(bottom, #3285E1 0%, #3285E1 100%);
+	background-image: -moz-linear-gradient(bottom, #3285E1 0%, #3285E1 100%);
+	background-image: -webkit-linear-gradient(bottom, #3285E1 0%, #3285E1 100%);
+	background-image: -ms-linear-gradient(bottom, #3285E1 0%, #3285E1 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #3285E1),
+		color-stop(1, #3285E1)
+	);
+	background-position: center top;
+	background-repeat: no-repeat;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 5px;
+	border: 1px solid #2E6DA4;
+	color: #FFF;
+	font: normal 14px Arial, Helvetica, sans-serif;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+	text-transform: uppercase;
+	width: 100%;
+}
+.myButton:hover {
+	background-color: #286090;
+	background-image: linear-gradient(top, #286090 0%, #286090 100%);
+	background-image: -o-linear-gradient(top, #286090 0%, #286090 100%);
+	background-image: -moz-linear-gradient(top, #286090 0%, #286090 100%);
+	background-image: -webkit-linear-gradient(top, #286090 0%, #286090 100%);
+	background-image: -ms-linear-gradient(top, #286090 0%, #286090 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #286090),
+		color-stop(1, #286090)
+	);
+	background-position: center bottom;
+	border: 1px solid #286090;
+	font: normal 14px Arial, Helvetica, sans-serif;
+}

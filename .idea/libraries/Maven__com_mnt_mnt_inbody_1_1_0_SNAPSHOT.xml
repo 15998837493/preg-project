@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.mnt:mnt-inbody:1.1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mnt/mnt-inbody/1.1.0-SNAPSHOT/mnt-inbody-1.1.0-20180425.053133-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mnt/mnt-inbody/1.1.0-SNAPSHOT/mnt-inbody-1.1.0-20180425.053133-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/mnt/mnt-inbody/1.1.0-SNAPSHOT/mnt-inbody-1.1.0-20180425.053133-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

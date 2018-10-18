@@ -1,0 +1,187 @@
+
+package com.mnt.preg.master.entity.items;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.mnt.health.core.annotation.UpdateAnnotation;
+import com.mnt.preg.main.entity.MappedEntity;
+
+/**
+ * 干预疾病表
+ * 
+ * @author zcq
+ * @version 1.0
+ * 
+ *          变更履历：
+ *          v1.0 2015-6-26 zcq 初版
+ */
+@Entity
+@Table(name = "mas_intervene_disease")
+public class InterveneDisease extends MappedEntity {
+
+    private static final long serialVersionUID = 7692318920843956166L;
+
+    /** 关联疾病主键 */
+    private String diseaseId;
+
+    /** 关联疾病编码 */
+    @UpdateAnnotation
+    private String diseaseCode;
+
+    /** 关联疾病名称 */
+    @UpdateAnnotation
+    private String diseaseName;
+
+    /** 疾病ICD10编码 */
+    @UpdateAnnotation
+    private String diseaseIcd10;
+
+    /** 干预疾病类型 */
+    @UpdateAnnotation
+    private String diseaseType;
+
+    /** 流行病学 */
+    @UpdateAnnotation
+    private String diseaseEpidemiology;
+
+    /** 伤害 */
+    @UpdateAnnotation
+    private String diseaseHarm;
+
+    /** 概述 */
+    @UpdateAnnotation
+    private String diseaseDescription;
+
+    /** 状态 */
+    @UpdateAnnotation
+    private String status;
+
+    /** 诊断 */
+    @UpdateAnnotation
+    private String diseaseDiagnosis;
+
+    /** 是否治疗项目 */
+    @UpdateAnnotation
+    private String diseaseTreatmentItem;
+
+    /** 是否营养状态诊断(上次诊断) 0/是否营养相关疾病诊断(永久诊断) 1 */
+    @UpdateAnnotation
+    private String diagnosisIsPermanent;
+
+    @Id
+    @GenericGenerator(name = "systemUUID", strategy = "uuid")
+    @GeneratedValue(generator = "systemUUID")
+    @Column(name = "disease_id")
+    public String getDiseaseId() {
+        return diseaseId;
+    }
+
+    public void setDiseaseId(String diseaseId) {
+        this.diseaseId = diseaseId;
+    }
+
+    @Column(name = "disease_code")
+    public String getDiseaseCode() {
+        return diseaseCode;
+    }
+
+    public void setDiseaseCode(String diseaseCode) {
+        this.diseaseCode = diseaseCode;
+    }
+
+    @Column(name = "disease_name")
+    public String getDiseaseName() {
+        return diseaseName;
+    }
+
+    public void setDiseaseName(String diseaseName) {
+        this.diseaseName = diseaseName;
+    }
+
+    @Column(name = "disease_epidemiology")
+    public String getDiseaseEpidemiology() {
+        return diseaseEpidemiology;
+    }
+
+    public void setDiseaseEpidemiology(String diseaseEpidemiology) {
+        this.diseaseEpidemiology = diseaseEpidemiology;
+    }
+
+    @Column(name = "disease_harm")
+    public String getDiseaseHarm() {
+        return diseaseHarm;
+    }
+
+    public void setDiseaseHarm(String diseaseHarm) {
+        this.diseaseHarm = diseaseHarm;
+    }
+
+    @Column(name = "disease_description")
+    public String getDiseaseDescription() {
+        return diseaseDescription;
+    }
+
+    public void setDiseaseDescription(String diseaseDescription) {
+        this.diseaseDescription = diseaseDescription;
+    }
+
+    @Column(name = "disease_type")
+    public String getDiseaseType() {
+        return diseaseType;
+    }
+
+    public void setDiseaseType(String diseaseType) {
+        this.diseaseType = diseaseType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Column(name = "disease_diagnosis")
+    public String getDiseaseDiagnosis() {
+        return diseaseDiagnosis;
+    }
+
+    public void setDiseaseDiagnosis(String diseaseDiagnosis) {
+        this.diseaseDiagnosis = diseaseDiagnosis;
+    }
+
+    @Column(name = "disease_treatment_item")
+    public String getDiseaseTreatmentItem() {
+        return diseaseTreatmentItem;
+    }
+
+    public void setDiseaseTreatmentItem(String diseaseTreatmentItem) {
+        this.diseaseTreatmentItem = diseaseTreatmentItem;
+    }
+
+    @Column(name = "disease_icd10")
+    public String getDiseaseIcd10() {
+        return diseaseIcd10;
+    }
+
+    public void setDiseaseIcd10(String diseaseIcd10) {
+        this.diseaseIcd10 = diseaseIcd10;
+    }
+
+    @Column(name = "diagnosis_is_permanent")
+    public String getDiagnosisIsPermanent() {
+        return diagnosisIsPermanent;
+    }
+
+    public void setDiagnosisIsPermanent(String diagnosisIsPermanent) {
+        this.diagnosisIsPermanent = diagnosisIsPermanent;
+    }
+
+}

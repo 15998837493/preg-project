@@ -1,0 +1,83 @@
+.mytitle-left {
+	background-color: #84ABE1;
+	height: 34px;
+	width: 2%;
+	padding: 7px;
+	border: 1px solid;
+	border-color: #337AB7;
+}
+
+.mytitle-right {
+	background-color: #F5F5F5;
+	height: 34px;
+	width: 98%;
+	padding: 7px;
+	border: 1px solid;
+	border-color: #84ABE1;
+	margin-bottom: 10px;
+}
+
+.redClass {
+	color: red;
+}
+
+.thirdTitle {
+	width: 7%;
+}
+
+.intake-sm {
+	height: 28px;
+	width: 100%;
+	padding: 2px 4px;
+	margin: 0;
+}
+
+.intake-input {
+	height: 28px;
+	width: 100%;
+	padding: 4px;
+	color: black;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	margin: 0;
+}
+
+.input-group .addon-left {
+	border: 0px;
+	background-color: white;
+	text-align: right;
+	padding: 6px;
+	min-width: 110px;
+}
+
+.input-group .addon-center {
+	border: 0px;
+	background-color: white;
+	text-align: right;
+	padding: 0px;
+	min-width: 1px;
+}
+
+.input-group .addon-checkbox {
+	border: 0px;
+	background-color: white;
+	text-align: right;
+	padding: 6px;
+	min-width: 90px;
+}
+
+.input-group .first-addon {
+	border-left: 0px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.input-group-addon {
+	padding: 2px 4px;
+	min-width: 38px;
+	cursor: pointer;
+}
+
+/* .input-group[class*="col-"] {
+	padding-right: 15px;
+} */

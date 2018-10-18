@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/cache   
+    http://www.springframework.org/schema/cache/spring-cache.xsd
+    http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+
+	<!-- 激活自动代理功能 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- 自动加载构建bean -->
+	<context:component-scan base-package="com.mnt.preg">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- 数据库配置 -->
+	<import resource="test-hibernate-spring.xml" />
+
+	<!-- 缓存属性 -->
+	<bean id="defaultCacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:test-ehcache.xml" />
+	</bean>
+
+	<!-- 支持缓存注解 -->
+	<cache:annotation-driven cache-manager="cacheManager" />
+
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="defaultCacheManager" />
+	</bean>
+
+</beans>

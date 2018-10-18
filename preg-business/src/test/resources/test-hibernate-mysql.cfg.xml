@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- 设置数据库方言 一个Hibernate Dialect类名允许Hibernate针对特定的关系数据库生成优化的SQL -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 在SessionFactory创建时，自动检查数据库结构，或者将数据库schema的DDL导出到数据库. 使用 create-drop时,在显式关闭SessionFactory时，将drop掉数据库schema. -->
+		<property name="hibernate.hbm2ddl.auto">false</property>
+		<!-- 输出所有SQL语句到控制台. 有一个另外的选择是把org.hibernate.SQL这个log category设为debug -->
+		<property name="hibernate.show_sql">false</property>
+		<!-- 在log和console中打印出更漂亮的SQL -->
+		<property name="hibernate.format_sql">false</property>
+		<!-- 非零值，指定JDBC抓取数量的大小 (调用Statement.setFetchSize()). -->
+		<property name="hibernate.jdbc.fetch_size">100</property>
+		<!-- 非零值，允许Hibernate使用JDBC2的批量更新. -->
+		<property name="hibernate.jdbc.batch_size">50</property>
+
+		<!-- 事务关闭好关闭数据库连接 指定Hibernate在何时释放JDBC连接. 默认情况下,直到Session被显式关闭或被断开连接时,才会释放JDBC连接. 
+			对于应用程序服务器的JTA数据源, 你应当使用after_statement, 这样在每次JDBC调用后，都会主动的释放连接. 对于非JTA的连接, 
+			使用after_transaction在每个事务结束时释放连接是合理的. auto将为JTA和CMT事务策略选择after_statement, 
+			为JDBC事务策略选择after_transaction. -->
+		<property name="hibernate.connection.release_mode">after_transaction</property>
+
+		<!-- 允许查询缓存, 个别查询仍然需要被设置为可缓存的. -->
+		<property name="hibernate.cache.use_query_cache">false</property>
+		<!-- 能用来完全禁止使用二级缓存. 对那些在类的映射定义中指定<cache>的类，会默认开启二级缓存. -->
+		<property name="hibernate.cache.use_second_level_cache">
+			true
+		</property>
+		<!-- 允许被缓存的JDBC连接开启自动提交(autocommit) (不建议). -->
+		<property name="hibernate.connection.autocommit">false</property>
+
+	</session-factory>
+
+</hibernate-configuration>

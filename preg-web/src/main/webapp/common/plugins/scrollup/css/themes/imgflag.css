@@ -1,0 +1,8 @@
+/* Image style */
+.demo{height:1300px; padding-top:100px}
+.demo p{text-align:center; height:32px; line-height:32px; font-size:16px}
+.demo p span{margin:20px}
+.demo p a.cur{color:#f60; font-weight:bold}
+.backToTop{width:16px; background:#dff3fd url("../../img/top.gif") no-repeat 0px 5px; padding:20px 0 4px 4px; line-height:16px;-moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px;}
+a.backToTop{text-decoration:none;}
+a.backToTop:hover{text-decoration:none; color:#f60}

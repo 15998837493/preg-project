@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="preg-web:war">
+    <output-path>$PROJECT_DIR$/preg-web/target</output-path>
+    <root id="archive" name="preg-web-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="preg-web:war exploded" />
+    </root>
+  </artifact>
+</component>

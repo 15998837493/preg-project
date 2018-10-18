@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd 
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd    
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+	default-autowire="byName">
+
+	<!-- 激活自动代理功能 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- 加载属性配置文件 -->
+	<context:property-placeholder location="classpath:config-web.properties" />
+	<!-- 扫描标记@Controller注解的类 -->
+	<context:component-scan base-package="com.mnt.preg">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+
+	<mvc:annotation-driven />
+	<bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor" />
+
+	<!-- 请求拦截器配置 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**/*.action" />
+			<mvc:exclude-mapping path="/dlym.action" />
+			<mvc:exclude-mapping path="/userLogin.action" />
+			<mvc:exclude-mapping path="/main.action" />
+			<mvc:exclude-mapping path="/logout.action" />
+			<mvc:exclude-mapping path="/timeout.action" />
+			<!-- <mvc:exclude-mapping path="/*.action" /> -->
+			<bean class="com.mnt.preg.web.interceptor.ControllerInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!--国际化配置 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!--表现层提示语 -->
+				<value>controller_message</value>
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<!--刷新资源文件的周期，以秒为单位,cacheSeconds默认值为-1表示永不刷新 -->
+		<property name="cacheSeconds" value="300" />
+	</bean>
+
+	<!-- 统一异常处理配置 -->
+	<bean id="exceptionResolver" class="com.mnt.preg.web.exception.ControllerExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">/main/error</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 配置视图解析器 -->
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/page" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 配置上传功能 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:defaultEncoding="utf-8" />
+</beans>
